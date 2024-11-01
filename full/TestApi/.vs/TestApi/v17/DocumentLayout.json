@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\TestApi\\TestApi\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9583A84A-0970-4CCF-A152-57563356CD56}|TestApi\\TestApi.csproj|D:\\TestApi\\TestApi\\testapi\\validator\\parkingvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9583A84A-0970-4CCF-A152-57563356CD56}|TestApi\\TestApi.csproj|solutionrelative:testapi\\validator\\parkingvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9583A84A-0970-4CCF-A152-57563356CD56}|TestApi\\TestApi.csproj|d:\\testapi\\testapi\\testapi\\models\\parking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9583A84A-0970-4CCF-A152-57563356CD56}|TestApi\\TestApi.csproj|solutionrelative:testapi\\models\\parking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9583A84A-0970-4CCF-A152-57563356CD56}|TestApi\\TestApi.csproj|D:\\TestApi\\TestApi\\testapi\\controllers\\parkingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9583A84A-0970-4CCF-A152-57563356CD56}|TestApi\\TestApi.csproj|solutionrelative:testapi\\controllers\\parkingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9583A84A-0970-4CCF-A152-57563356CD56}|TestApi\\TestApi.csproj|D:\\TestApi\\TestApi\\testapi\\bll\\parkingbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9583A84A-0970-4CCF-A152-57563356CD56}|TestApi\\TestApi.csproj|solutionrelative:testapi\\bll\\parkingbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9583A84A-0970-4CCF-A152-57563356CD56}|TestApi\\TestApi.csproj|D:\\TestApi\\TestApi\\testapi\\bdlvl\\parkingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9583A84A-0970-4CCF-A152-57563356CD56}|TestApi\\TestApi.csproj|solutionrelative:testapi\\bdlvl\\parkingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9583A84A-0970-4CCF-A152-57563356CD56}|TestApi\\TestApi.csproj|D:\\TestApi\\TestApi\\testapi\\app_start\\webapiconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9583A84A-0970-4CCF-A152-57563356CD56}|TestApi\\TestApi.csproj|solutionrelative:testapi\\app_start\\webapiconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Parking.cs",
+              "DocumentMoniker": "D:\\TestApi\\TestApi\\TestApi\\Models\\Parking.cs",
+              "RelativeDocumentMoniker": "TestApi\\Models\\Parking.cs",
+              "ToolTip": "D:\\TestApi\\TestApi\\TestApi\\Models\\Parking.cs",
+              "RelativeToolTip": "TestApi\\Models\\Parking.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T14:31:04.858Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ParkingValidator.cs",
+              "DocumentMoniker": "D:\\TestApi\\TestApi\\TestApi\\Validator\\ParkingValidator.cs",
+              "RelativeDocumentMoniker": "TestApi\\Validator\\ParkingValidator.cs",
+              "ToolTip": "D:\\TestApi\\TestApi\\TestApi\\Validator\\ParkingValidator.cs",
+              "RelativeToolTip": "TestApi\\Validator\\ParkingValidator.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T13:56:34.642Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ParkingBLL.cs",
+              "DocumentMoniker": "D:\\TestApi\\TestApi\\TestApi\\BLL\\ParkingBLL.cs",
+              "RelativeDocumentMoniker": "TestApi\\BLL\\ParkingBLL.cs",
+              "ToolTip": "D:\\TestApi\\TestApi\\TestApi\\BLL\\ParkingBLL.cs",
+              "RelativeToolTip": "TestApi\\BLL\\ParkingBLL.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAAADAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T13:40:46.915Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ParkingRepository.cs",
+              "DocumentMoniker": "D:\\TestApi\\TestApi\\TestApi\\BDLvl\\ParkingRepository.cs",
+              "RelativeDocumentMoniker": "TestApi\\BDLvl\\ParkingRepository.cs",
+              "ToolTip": "D:\\TestApi\\TestApi\\TestApi\\BDLvl\\ParkingRepository.cs",
+              "RelativeToolTip": "TestApi\\BDLvl\\ParkingRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T13:35:48.488Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ParkingsController.cs",
+              "DocumentMoniker": "D:\\TestApi\\TestApi\\TestApi\\Controllers\\ParkingsController.cs",
+              "RelativeDocumentMoniker": "TestApi\\Controllers\\ParkingsController.cs",
+              "ToolTip": "D:\\TestApi\\TestApi\\TestApi\\Controllers\\ParkingsController.cs",
+              "RelativeToolTip": "TestApi\\Controllers\\ParkingsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEUAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T13:24:24.609Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "WebApiConfig.cs",
+              "DocumentMoniker": "D:\\TestApi\\TestApi\\TestApi\\App_Start\\WebApiConfig.cs",
+              "RelativeDocumentMoniker": "TestApi\\App_Start\\WebApiConfig.cs",
+              "ToolTip": "D:\\TestApi\\TestApi\\TestApi\\App_Start\\WebApiConfig.cs",
+              "RelativeToolTip": "TestApi\\App_Start\\WebApiConfig.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T19:59:52.416Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
