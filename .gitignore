@@ -1,0 +1,70 @@
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# Visual Studio
+.vscode/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ASP.NET / .NET Core
+bin/
+obj/
+out/
+
+# Логи, отладочные файлы и отчеты
+*.log
+*.tss
+*.pdb
+*.cache
+*.ilk
+*.tmp
+*.vspscc
+*.vssscc
+*.log
+*.scc
+TestResult*
+.trx
+*.coverage
+*.coveragexml
+*.testsettings
+*.vsmdi
+*.tlog
+
+# Пакеты NuGet
+*.nupkg
+packages/
+.nuget/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Конфиденциальные данные и секреты
+*.env
+appsettings.Development.json
+secrets.json
+
+# Конфигурации IDE и прочие настройки
+.idea/
+*.CodeAnalysisLog.xml
+*.dotCover
+
+# Резервные и временные файлы
+*.bak
+*.swp
+*~
+
+# Кэш и данные
+*.dbmdl
+*.jfm
+*.idb
+*.opendb
+ReSharper*/
+resharperlog*
+
+# Rider
+.idea/
+*.sln.iml
