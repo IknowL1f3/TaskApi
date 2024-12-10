@@ -9,7 +9,7 @@ namespace TestApi.BDLvl
 {
     public class ParkingRepository
     {
-        private ParkingEntities5 db = new ParkingEntities5();
+        private ParkingEntities db = new ParkingEntities();
 
         public List<Parking> GetAllParkings()
         {

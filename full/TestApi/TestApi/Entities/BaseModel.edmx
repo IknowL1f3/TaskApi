@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Хранилище ParkingModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Balance">
+          <Key>
+            <PropertyRef Name="BalanceId" />
+          </Key>
+          <Property Name="BalanceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Balance" Type="money" Nullable="false" />
+        </EntityType>
         <EntityType Name="Parking">
           <Key>
             <PropertyRef Name="ParkingId" />
@@ -13,6 +20,17 @@
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="Address" Type="nvarchar" MaxLength="100" />
           <Property Name="HourRate" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="ParkingEvent">
+          <Key>
+            <PropertyRef Name="ParkingEventId" />
+          </Key>
+          <Property Name="ParkingEventId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EntryTime" Type="datetime" Nullable="false" />
+          <Property Name="DepartureTime" Type="datetime" />
+          <Property Name="PaymentState" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ParkingId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -24,15 +42,86 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Secondname" Type="varchar" MaxLength="100" />
+          <Property Name="CarNumber" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="BalanceId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ParkingEvent_Parking">
+          <End Role="Parking" Type="Self.Parking" Multiplicity="1" />
+          <End Role="ParkingEvent" Type="Self.ParkingEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parking">
+              <PropertyRef Name="ParkingId" />
+            </Principal>
+            <Dependent Role="ParkingEvent">
+              <PropertyRef Name="ParkingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParkingEvent_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="ParkingEvent" Type="Self.ParkingEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ParkingEvent">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Balance">
+          <End Role="Balance" Type="Self.Balance" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Balance">
+              <PropertyRef Name="BalanceId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="BalanceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище ParkingModelContainer">
+          <EntitySet Name="Balance" EntityType="Self.Balance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Parking" EntityType="Self.Parking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParkingEvent" EntityType="Self.ParkingEvent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ParkingEvent_Parking" Association="Self.FK_ParkingEvent_Parking">
+            <End Role="Parking" EntitySet="Parking" />
+            <End Role="ParkingEvent" EntitySet="ParkingEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParkingEvent_User" Association="Self.FK_ParkingEvent_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="ParkingEvent" EntitySet="ParkingEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Balance" Association="Self.FK_User_Balance">
+            <End Role="Balance" EntitySet="Balance" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ParkingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Balance">
+          <Key>
+            <PropertyRef Name="BalanceId" />
+          </Key>
+          <Property Name="BalanceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Balance1" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Balance" FromRole="Balance" ToRole="User" />
+        </EntityType>
         <EntityType Name="Parking">
           <Key>
             <PropertyRef Name="ParkingId" />
@@ -41,6 +130,20 @@
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="HourRate" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="ParkingEvent" Relationship="Self.FK_ParkingEvent_Parking" FromRole="Parking" ToRole="ParkingEvent" />
+        </EntityType>
+        <EntityType Name="ParkingEvent">
+          <Key>
+            <PropertyRef Name="ParkingEventId" />
+          </Key>
+          <Property Name="ParkingEventId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EntryTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DepartureTime" Type="DateTime" Precision="3" />
+          <Property Name="PaymentState" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ParkingId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Parking" Relationship="Self.FK_ParkingEvent_Parking" FromRole="ParkingEvent" ToRole="Parking" />
+          <NavigationProperty Name="User" Relationship="Self.FK_ParkingEvent_User" FromRole="ParkingEvent" ToRole="User" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -52,16 +155,89 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityContainer Name="ParkingEntities5" annotation:LazyLoadingEnabled="true">
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Secondname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CarNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BalanceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Balance" Relationship="Self.FK_User_Balance" FromRole="User" ToRole="Balance" />
+          <NavigationProperty Name="ParkingEvent" Relationship="Self.FK_ParkingEvent_User" FromRole="User" ToRole="ParkingEvent" />
+        </EntityType>
+        <Association Name="FK_User_Balance">
+          <End Role="Balance" Type="Self.Balance" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Balance">
+              <PropertyRef Name="BalanceId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="BalanceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParkingEvent_Parking">
+          <End Role="Parking" Type="Self.Parking" Multiplicity="1" />
+          <End Role="ParkingEvent" Type="Self.ParkingEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parking">
+              <PropertyRef Name="ParkingId" />
+            </Principal>
+            <Dependent Role="ParkingEvent">
+              <PropertyRef Name="ParkingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParkingEvent_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="ParkingEvent" Type="Self.ParkingEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ParkingEvent">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ParkingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Balance" EntityType="Self.Balance" />
           <EntitySet Name="Parking" EntityType="Self.Parking" />
+          <EntitySet Name="ParkingEvent" EntityType="Self.ParkingEvent" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_User_Balance" Association="Self.FK_User_Balance">
+            <End Role="Balance" EntitySet="Balance" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParkingEvent_Parking" Association="Self.FK_ParkingEvent_Parking">
+            <End Role="Parking" EntitySet="Parking" />
+            <End Role="ParkingEvent" EntitySet="ParkingEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParkingEvent_User" Association="Self.FK_ParkingEvent_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="ParkingEvent" EntitySet="ParkingEvent" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ParkingModelContainer" CdmEntityContainer="ParkingEntities5">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ParkingModelContainer" CdmEntityContainer="ParkingEntities">
+          <EntitySetMapping Name="Balance">
+            <EntityTypeMapping TypeName="ParkingModel.Balance">
+              <MappingFragment StoreEntitySet="Balance">
+                <ScalarProperty Name="BalanceId" ColumnName="BalanceId" />
+                <ScalarProperty Name="Balance1" ColumnName="Balance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Parking">
             <EntityTypeMapping TypeName="ParkingModel.Parking">
               <MappingFragment StoreEntitySet="Parking">
@@ -69,6 +245,18 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="HourRate" ColumnName="HourRate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParkingEvent">
+            <EntityTypeMapping TypeName="ParkingModel.ParkingEvent">
+              <MappingFragment StoreEntitySet="ParkingEvent">
+                <ScalarProperty Name="ParkingEventId" ColumnName="ParkingEventId" />
+                <ScalarProperty Name="EntryTime" ColumnName="EntryTime" />
+                <ScalarProperty Name="DepartureTime" ColumnName="DepartureTime" />
+                <ScalarProperty Name="PaymentState" ColumnName="PaymentState" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ParkingId" ColumnName="ParkingId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -80,6 +268,19 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="ParkingModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Secondname" ColumnName="Secondname" />
+                <ScalarProperty Name="CarNumber" ColumnName="CarNumber" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="BalanceId" ColumnName="BalanceId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

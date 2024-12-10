@@ -13,20 +13,19 @@ namespace TestApi.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Parking
+    public partial class Balance
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Parking()
+        public Balance()
         {
-            this.ParkingEvent = new HashSet<ParkingEvent>();
+            this.User = new HashSet<User>();
         }
     
-        public int ParkingId { get; set; }
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public Nullable<decimal> HourRate { get; set; }
+        public int BalanceId { get; set; }
+        public decimal Balance1 { get; set; }
+    
         [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ParkingEvent> ParkingEvent { get; set; }
+        public virtual ICollection<User> User { get; set; }
     }
 }

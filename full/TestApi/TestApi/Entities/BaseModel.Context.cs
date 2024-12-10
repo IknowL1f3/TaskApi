@@ -13,10 +13,10 @@ namespace TestApi.Entities
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ParkingEntities5 : DbContext
+    public partial class ParkingEntities : DbContext
     {
-        public ParkingEntities5()
-            : base("name=ParkingEntities5")
+        public ParkingEntities()
+            : base("name=ParkingEntities")
         {
         }
     
@@ -25,7 +25,10 @@ namespace TestApi.Entities
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Balance> Balance { get; set; }
         public virtual DbSet<Parking> Parking { get; set; }
+        public virtual DbSet<ParkingEvent> ParkingEvent { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<User> User { get; set; }
     }
 }

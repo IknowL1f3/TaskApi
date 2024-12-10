@@ -4,9 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="52935e4cccf34cd9ad27e1a58c0407d8" Name="Diagram1">
-        <EntityTypeShape EntityType="ParkingModel.Parking" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ParkingModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="775f39b671ba420593eb729c1231ad85" Name="Diagram1">
+        <EntityTypeShape EntityType="ParkingModel.Balance" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParkingModel.Parking" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParkingModel.ParkingEvent" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParkingModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParkingModel.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="ParkingModel.FK_User_Balance" ManuallyRouted="false" />
+        <AssociationConnector Association="ParkingModel.FK_ParkingEvent_Parking" ManuallyRouted="false" />
+        <AssociationConnector Association="ParkingModel.FK_ParkingEvent_User" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
